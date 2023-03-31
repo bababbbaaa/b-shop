@@ -40,12 +40,10 @@
                             class="overflow-auto max-h-[320px] lg:max-h-[100%] space-y-10 p-6 2xl:p-8 rounded-2xl bg-card">
 
 
-                            <input type="hidden" name="sort" value="{{request('sort')}}">
-
                             @foreach(filters() as $filter)
                                 {!! $filter !!}
                             @endforeach
-
+                            <input type="hidden" name="sort" value="{{request('sort')}}">
                             <button type="submit" class="w-full !h-16 btn btn-pink">Найти</button>
 
                             @if(request('filters'))
