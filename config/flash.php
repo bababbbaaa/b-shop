@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'info'  => 'bg-purple text-center text-white',
-    'alert' => 'bg-pink text-center text-white',
+    'info'  => 'bg-pink text-center ',
+    'alert' => 'bg-pink text-center ',
 ];

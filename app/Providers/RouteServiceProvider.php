@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Contracts\RouteRegistrar;
+use App\Routing\AccountRegistrar;
 use App\Routing\AppRegistrar;
 use App\Routing\CartRegistrar;
 use App\Routing\CatalogRegistrar;
@@ -28,6 +29,7 @@ class RouteServiceProvider extends ServiceProvider {
         ProductRegistrar::class,
         CatalogRegistrar::class,
         AuthRegistrar::class,
+        AccountRegistrar::class,
     ];
 
     public const HOME = '/';

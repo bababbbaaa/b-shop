@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', 'B-Shop - Главная страница')
+@section('title', 'B-Shop - Корзина')
 
 @section('content')
     <main class="py-16 lg:py-20">
@@ -8,25 +8,25 @@
 
             <!-- Breadcrumbs -->
             <ul class="breadcrumbs flex flex-wrap gap-y-1 gap-x-4 mb-6">
-                <li><a href="{{route('home')}}" class="text-body hover:text-pink text-xs">Главная</a></li>
-                <li><span class="text-body text-xs">Корзина покупок</span></li>
+                <li><a href="{{route('home')}}" class=" hover:text-pink text-xs">Главная</a></li>
+                <li><span class=" text-xs">Корзина покупок</span></li>
             </ul>
 
             <section>
                 <!-- Section heading -->
-                <h1 class="mb-8 text-lg lg:text-[42px] font-black">Корзина покупок</h1>
+                <h1 class="mb-8 text-lg lg:text-[42px] font-bold">Корзина покупок</h1>
 
                 @if($items->isEmpty())
-                    <div class=" py-3 px-6 rounded-lg bg-pink text-white">Корзина пуста</div>
+                    <div class="text-white font-medium py-3 px-6 rounded-lg bg-pink ">Корзина пуста</div>
 
                 @else
                     <!-- Message -->
-                    <div class="lg:hidden py-3 px-6 rounded-lg bg-pink text-white">Таблицу можно пролистать вправо →
+                    <div class="lg:hidden py-3 px-6 rounded-lg bg-pink ">Таблицу можно пролистать вправо →
                     </div>
 
                     <!-- Adaptive table -->
                     <div class="overflow-auto">
-                        <table class="min-w-full border-spacing-y-4 text-white text-sm text-left"
+                        <table class="min-w-full border-spacing-y-4  text-sm text-left"
                                style="border-collapse: separate">
                             <thead class="text-xs uppercase">
                             <th scope="col" class="py-3 px-6">Товар</th>
@@ -50,14 +50,14 @@
                                             </div>
                                             <div class="py-3">
                                                 <h4 class="text-xs sm:text-sm xl:text-md font-bold">
-                                                    <a href="product.html"
-                                                       class="inline-block text-white hover:text-pink">
+                                                    <a href="{{route('product', $item->product->slug)}}"
+                                                       class="inline-block  hover:text-pink">
                                                         {{$item->product->title}}
                                                     </a></h4>
                                                 @if($item->optionValues->isNotEmpty())
                                                     <ul class="space-y-1 mt-2 text-xs">
                                                         @foreach($item->optionValues as $key => $value)
-                                                            <li class="text-body">{{$value->option->title}}
+                                                            <li class="">{{$value->option->title}}
                                                                 : {{$value->title}}</li>
                                                         @endforeach
                                                     </ul>
@@ -73,15 +73,15 @@
                                             <form action="{{route('cart.quantity', $item)}}" method="post">
                                                 @csrf
                                                 <button type="submit"
-                                                        class="w-12 h-full rounded-lg border border-body/10 hover:bg-card/20 active:bg-card/50 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs text-center font-bold shadow-transparent outline-0 transition">
+                                                        class="w-12 !h-12 !px-0 btn btn-pink">
                                                     -
                                                 </button>
                                                 <input type="number"
                                                        name="quantity"
-                                                       class="h-full px-2 lg:px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs text-center font-bold shadow-transparent outline-0 transition"
+                                                       class="h-14 text-center px-4 rounded-lg border border-[#85552d] bg-white/20 focus:border-pink focus:shadow-[0_0_0_2px_#85552d] outline-none transition text-xxs md:text-xs font-semibold"
                                                        min="1" max="999" value="{{$item->quantity}}" placeholder="К-во">
                                                 <button type="submit"
-                                                        class="w-12 h-full rounded-lg border border-body/10 hover:bg-card/20 active:bg-card/50 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs text-center font-bold shadow-transparent outline-0 transition">
+                                                        class="w-12 !h-12 !px-0 btn btn-pink">
                                                     +
                                                 </button>
                                             </form>
@@ -113,12 +113,12 @@
                     </div>
 
                     <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mt-8">
-                        <div class="text-[32px] font-black">Итого: {{cart()->amount()}}</div>
+                        <div class="text-[32px] font-bold">Итого: {{cart()->amount()}}</div>
                         <div class="pb-3 lg:pb-0">
                             <form action="{{route('cart.clear')}}" method="POST">
                                 @csrf
                                 @method('delete')
-                                <button class="text-body hover:text-pink font-medium">Очистить корзину</button>
+                                <button class=" hover:text-pink font-medium">Очистить корзину</button>
                             </form>
                         </div>
                         <div class="flex flex-col sm:flex-row lg:justify-end gap-4">

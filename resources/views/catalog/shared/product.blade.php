@@ -4,9 +4,9 @@
              alt="{{$item->title}}">
     </a>
     <div class="grow flex flex-col py-8 px-6">
-        <h3 class="text-sm lg:text-md font-black">
+        <h3 class="text-sm lg:text-md font-bold">
             <a href="{{route('product', $item->slug)}}"
-               class="inline-block text-white hover:text-pink">
+               class="inline-block hover:text-pink">
                 {{$item->title}}
 
             </a></h3>

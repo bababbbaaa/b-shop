@@ -115,7 +115,7 @@
                     <div class="space-y-3 mt-5">
                         <div class="text-xxs md:text-xs">Есть аккаунт?
                             <a href="{{route('login.page')}}"
-                               class="text-white hover:text-white/70 font-bold underline underline-offset-4">Войти</a>
+                               class=" hover:/70 font-bold underline underline-offset-4">Войти</a>
                         </div>
                     </div>
                 </x-slot:buttons>

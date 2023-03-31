@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', 'Оформление заказа')
+@section('title', 'B-Shop - Оформление заказа')
 
 @section('content')
     <main class="py-16 lg:py-20">
@@ -8,14 +8,14 @@
 
             <!-- Breadcrumbs -->
             <ul class="breadcrumbs flex flex-wrap gap-y-1 gap-x-4 mb-6">
-                <li><a href="{{ route('home') }}" class="text-body hover:text-pink text-xs">Главная</a></li>
-                <li><a href="{{ route('cart') }}" class="text-body hover:text-pink text-xs">Корзина покупок</a></li>
-                <li><span class="text-body text-xs">Оформление заказа</span></li>
+                <li><a href="{{ route('home') }}" class=" hover:text-pink text-xs">Главная</a></li>
+                <li><a href="{{ route('cart') }}" class=" hover:text-pink text-xs">Корзина покупок</a></li>
+                <li><span class=" text-xs">Оформление заказа</span></li>
             </ul>
 
             <section>
                 <!-- Section heading -->
-                <h1 class="mb-8 text-lg lg:text-[42px] font-black">Оформление заказа</h1>
+                <h1 class="mb-8 text-lg lg:text-[42px] font-bold">Оформление заказа</h1>
 
                 <form action="{{ route('order.handle') }}" method="POST"
                       class="grid xl:grid-cols-3 items-start gap-6 2xl:gap-8 mt-12">
@@ -36,21 +36,6 @@
                             </x-forms.text-input>
 
                             @error('customer.first_name')
-                            <x-forms.error>
-                                {{ $message }}
-                            </x-forms.error>
-                            @enderror
-
-                            <x-forms.text-input
-                                name="customer[last_name]"
-                                type="text"
-                                placeholder="Фамилия"
-                                value="{{ old('customer.last_name') }}"
-                                :isError="$errors->has('customer.last_name')"
-                            >
-                            </x-forms.text-input>
-
-                            @error('customer.last_name')
                             <x-forms.error>
                                 {{ $message }}
                             </x-forms.error>
@@ -89,7 +74,7 @@
 
                             @guest
                                 <div x-data="{ createAccount: false }">
-                                    <div class="py-3 text-body">Вы можете создать аккаунт после оформления заказа</div>
+                                    <div class="py-3 ">Вы можете создать аккаунт после оформления заказа</div>
                                     <div class="form-checkbox">
                                         <input name="create_account"
                                                type="checkbox"
@@ -156,7 +141,7 @@
                                             <input type="radio"
                                                    name="delivery_type_id"
                                                    id="delivery-method-address-{{ $delivery->id }}"
-                                                   value="{{ $delivery->id }}"
+                                                   value="{{$delivery->id}}"
                                                 @checked($loop->first || old('delivery_id') === $delivery->id)
                                             >
                                             <label for="delivery-method-address-{{ $delivery->id }}"
@@ -164,39 +149,48 @@
                                                 {{ $delivery->title }}
                                             </label>
                                         </div>
+                                        <div
+                                            x-transition:enter="ease-out duration-300"
+                                            x-transition:enter-start="opacity-0"
+                                            x-transition:enter-end="opacity-100"
+                                            x-transition:leave="ease-in duration-150"
+                                            x-transition:leave-start="opacity-100"
+                                            x-transition:leave-end="opacity-0"
+                                            class="mt-4 space-y-3"
+                                        >
+                                            @if($delivery->with_address)
+                                                <x-forms.text-input
+                                                    hidden=""
+                                                    name="customer[city]"
+                                                    type="text"
+                                                    placeholder="Город"
+                                                    value="Симферополь"
+                                                    readonly=""
+                                                    :isError="$errors->has('customer.city')"
+                                                >
+                                                </x-forms.text-input>
+                                                @error('customer.city')
+                                                <x-forms.error>
+                                                    {{ $message }}
+                                                </x-forms.error>
+                                                @enderror
 
-                                        @if($delivery->with_address)
-                                            <x-forms.text-input
-                                                hidden=""
-                                                name="customer[city]"
-                                                type="text"
-                                                placeholder="Город"
-                                                value="Симферополь"
-                                                readonly=""
-                                                :isError="$errors->has('customer.city')"
-                                            >
-                                            </x-forms.text-input>
-                                            @error('customer.city')
-                                            <x-forms.error>
-                                                {{ $message }}
-                                            </x-forms.error>
-                                            @enderror
+                                                <x-forms.text-input
+                                                    name="customer[address]"
+                                                    type="text"
+                                                    placeholder="Адрес"
+                                                    value="{{ old('customer.address') }}"
+                                                    :isError="$errors->has('customer.address')"
+                                                >
+                                                </x-forms.text-input>
 
-                                            <x-forms.text-input
-                                                name="customer[address]"
-                                                type="text"
-                                                placeholder="Адрес"
-                                                value="{{ old('customer.address') }}"
-                                                :isError="$errors->has('customer.address')"
-                                            >
-                                            </x-forms.text-input>
-
-                                            @error('customer.address')
-                                            <x-forms.error>
-                                                {{ $message }}
-                                            </x-forms.error>
-                                            @enderror
-                                        @endif
+                                                @error('customer.address')
+                                                <x-forms.error>
+                                                    {{ $message }}
+                                                </x-forms.error>
+                                                @enderror
+                                            @endif
+                                        </div>
                                     </div>
                                 @endforeach
                             </div>
@@ -228,9 +222,9 @@
                     <!-- Checkout -->
                     <div class="p-6 2xl:p-8 rounded-[20px] bg-card">
                         <h3 class="mb-6 text-md 2xl:text-lg font-bold">Заказ</h3>
-                        <table class="w-full border-spacing-y-3 text-body text-xxs text-left"
+                        <table class="w-full border-spacing-y-3  text-xxs text-left"
                                style="border-collapse: separate">
-                            <thead class="text-[12px] text-body uppercase">
+                            <thead class="text-[12px]  uppercase">
                             <tr>
                                 <th scope="col" class="pb-2 border-b border-body/60">Товар</th>
                                 <th scope="col" class="px-2 pb-2 border-b border-body/60">К-во</th>
@@ -243,7 +237,7 @@
                                     <td scope="row" class="pb-3 border-b border-body/10">
                                         <h4 class="font-bold">
                                             <a href="{{ route('product', $item->product) }}"
-                                               class="inline-block text-white hover:text-pink break-words pr-3">
+                                               class="inline-block  hover:text-pink break-words pr-3">
                                                 {{ $item->product->title }}
                                             </a>
                                         </h4>
@@ -251,7 +245,7 @@
                                         @if($item->optionValues->isNotEmpty())
                                             <ul>
                                                 @foreach($item->optionValues as $value)
-                                                    <li class="text-body">
+                                                    <li class="">
                                                         {{ $value->option->title }}: {{ $value->title }}
                                                     </li>
                                                 @endforeach
@@ -274,24 +268,25 @@
                             <table class="w-full text-left">
                                 <tbody>
                                 <tr>
-                                    <th scope="row" class="text-md 2xl:text-lg font-black">Итого:</th>
-                                    <td class="text-md 2xl:text-lg font-black">{{ cart()->amount() }}</td>
+                                    <th scope="row" class="text-md 2xl:text-lg font-bold">Итого:</th>
+                                    <td class="text-md 2xl:text-lg font-bold">{{ cart()->amount() }}</td>
                                 </tr>
                                 </tbody>
                             </table>
                             <!-- Promocode -->
-                            <div class="space-y-4">
+                            <div class="space-y-4 hidden">
                                 <div class="flex gap-3">
                                     <input type="text"
-                                           class="grow w-full h-[56px] px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs shadow-transparent outline-0 transition"
+                                           class="grow w-full h-14 px-4 rounded-lg border border-[#85552d] bg-white/20 focus:border-pink focus:shadow-[0_0_0_2px_#85552d] outline-none transition text-xxs md:text-xs font-semibold"
                                            placeholder="Промокод" required>
                                     <button type="submit" class="shrink-0 w-14 !h-[56px] !px-0 btn btn-purple">→
                                     </button>
                                 </div>
                                 <div class="space-y-3">
-                                    <div class="px-4 py-3 rounded-lg bg-[#137d3d] text-xs">Промокод <a href="#"
-                                                                                                       class="mx-2 py-0.5 px-1.5 rounded-md border-dashed border-2 text-white hover:text-white/70 text-xs"
-                                                                                                       title="Удалить промокод">&times;
+                                    <div class="px-4 text-white py-3 rounded-lg bg-[#137d3d] text-xs">
+                                        Промокод <a href="#"
+                                                    class="mx-2 py-0.5 px-1.5  rounded-md border-dashed border-2  hover:/70 text-xs"
+                                                    title="Удалить промокод">&times;
                                             leeto15</a> успешно добавлен.
                                     </div>
                                     <!-- <div class="px-4 py-3 rounded-lg bg-[#b91414] text-xs">Промокод <b>leeto15</b> удалён.</div> -->

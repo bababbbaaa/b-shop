@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SignInFormRequest;
+use Domain\Auth\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -24,8 +25,11 @@ class SignInController extends Controller {
             ] )->onlyInput( 'email' );
         }
 
+        $user = User::query()
+                    ->where( 'email', $request->validated()['email'] )
+                    ->first();
 
-        SessionRegenerator::run();
+        SessionRegenerator::run( fn() => auth()->login( $user ) );
 
         return redirect()->intended( route( 'home' ) );
 

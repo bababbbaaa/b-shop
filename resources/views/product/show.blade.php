@@ -7,9 +7,9 @@
         <div class="container">
             <!-- Breadcrumbs -->
             <ul class="breadcrumbs flex flex-wrap gap-y-1 gap-x-4 mb-6">
-                <li><a href="{{ route('home') }}" class="text-body hover:text-pink text-xs">Главная</a></li>
-                <li><a href="{{ route('catalog') }}" class="text-body hover:text-pink text-xs">Каталог</a></li>
-                <li><span class="text-body text-xs">{{ $product->title }}</span></li>
+                <li><a href="{{ route('home') }}" class="font-medium hover:text-pink text-xs">Главная</a></li>
+                <li><a href="{{ route('catalog') }}" class="font-medium hover:text-pink text-xs">Каталог</a></li>
+                <li><span class="text-pink text-xs">{{ $product->title }}</span></li>
             </ul>
             <!-- Main product -->
             <section class="flex flex-col lg:flex-row gap-10 xl:gap-14 2xl:gap-20 mt-12">
@@ -24,7 +24,7 @@
 
                 <div class="basis-full lg:basis-3/5 xl:basis-2/4">
                     <div class="grow flex flex-col lg:py-8">
-                        <h1 class="text-lg md:text-xl xl:text-[42px] font-black">
+                        <h1 class="text-lg md:text-xl xl:text-[42px] font-bold">
                             {{ $product->title }}
                         </h1>
 
@@ -57,7 +57,7 @@
                                         d="M51.864 19.948a2.758 2.758 0 0 0-2.379-1.9l-15.008-1.363-5.935-13.89a2.765 2.765 0 0 0-5.083.002l-5.935 13.888-15.011 1.363a2.763 2.763 0 0 0-2.377 1.9 2.76 2.76 0 0 0 .808 2.936l11.345 9.95L8.944 47.57a2.763 2.763 0 0 0 1.074 2.853 2.753 2.753 0 0 0 3.036.133L26 42.818l12.942 7.738a2.765 2.765 0 0 0 4.113-2.986l-3.346-14.736 11.345-9.948a2.765 2.765 0 0 0 .81-2.938Z"/>
                                 </svg>
                             </li>
-                            <li class="text-body">
+                            <li class="">
                                 <svg class="w-4 md:w-6 h-4 md:h-6" xmlns="http://www.w3.org/2000/svg"
                                      fill="currentColor" viewBox="0 0 52 52">
                                     <path
@@ -67,13 +67,13 @@
                         </ul>
 
                         <div class="flex items-baseline gap-4 mt-4">
-                            <div class="text-pink text-lg md:text-xl font-black">{{ $product->price }}</div>
+                            <div class="text-pink text-lg md:text-xl font-bold">{{ $product->price }}</div>
                         </div>
 
                         @if($product->json_properties)
                             <ul class="sm:max-w-[360px] space-y-2 mt-8">
                                 @foreach($product->json_properties as $property => $value)
-                                    <li class="flex justify-between text-body">
+                                    <li class="flex justify-between ">
                                         <strong>{{$property}}:</strong> {{$value}}</li>
                                 @endforeach
                             </ul>
@@ -88,14 +88,13 @@
 
 
                                         <label for="filter-item-1"
-                                               class="cursor-pointer text-body text-xxs font-medium">
+                                               class="cursor-pointer  text-xxs font-medium">
                                             {{$option}}
                                         </label>
-
                                         <select name="options[]" id="filter-item-1"
-                                                class="form-select w-full h-12 px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs shadow-transparent outline-0 transition">
+                                                class="form-select w-full h-12 px-4 rounded-lg border border-[#85552d] focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5  text-xs shadow-transparent outline-0 transition">
                                             @foreach($values as $value)
-                                                <option value="{{$value->id}}" class="text-dark">
+                                                <option value="{{$value->id}}" class="">
                                                     {{$value->title}}
                                                 </option>
                                             @endforeach
@@ -106,16 +105,16 @@
                             </div>
 
                             <div class="flex flex-wrap items-center gap-3 xs:gap-4">
-                                <div class="flex items-stretch h-[54px] lg:h-[72px] gap-2">
+                                <div class="flex items-center h-[54px] lg:h-[72px] gap-2">
                                     <button type="button"
-                                            class="w-12 h-full rounded-lg border border-body/10 hover:bg-card/20 active:bg-card/50 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs text-center font-bold shadow-transparent outline-0 transition">
+                                            class="w-12 !h-12 !px-0 btn btn-pink">
                                         -
                                     </button>
                                     <input type="number" name="quantity"
-                                           class="h-full px-2 md:px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs text-center font-bold shadow-transparent outline-0 transition"
+                                           class="h-full text-center px-4 rounded-lg border border-[#85552d] bg-white/20 focus:border-pink focus:shadow-[0_0_0_2px_#85552d] outline-none transition text-xxs md:text-xs font-semibold"
                                            min="1" max="999" value="1" placeholder="К-во">
                                     <button type="button"
-                                            class="w-12 h-full rounded-lg border border-body/10 hover:bg-card/20 active:bg-card/50 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs text-center font-bold shadow-transparent outline-0 transition">
+                                            class="w-12 !h-12 !px-0 btn btn-pink">
                                         +
                                     </button>
                                 </div>
@@ -138,7 +137,7 @@
 
             <!-- Description -->
             <section class="mt-12 xl:mt-16 pt-8 lg:pt-12 border-t border-white/10">
-                <h2 class="mb-12 text-lg lg:text-[42px] font-black">Описание</h2>
+                <h2 class="mb-12 text-lg lg:text-[42px] font-bold">Описание</h2>
                 <article class="text-xs md:text-sm">
                     {!! $product->text !!}
                 </article>
@@ -147,7 +146,7 @@
             <!-- Watched products  -->
             @if(count($sees))
                 <section class="mt-16 xl:mt-24">
-                    <h2 class="mb-12 text-lg lg:text-[42px] font-black">Просмотренные товары</h2>
+                    <h2 class="mb-12 text-lg lg:text-[42px] font-bold">Просмотренные товары</h2>
                     <!-- Products list -->
                     <div
                         class="products grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-8 lg:gap-y-10 2xl:gap-y-12">
