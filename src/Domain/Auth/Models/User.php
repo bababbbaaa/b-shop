@@ -3,6 +3,7 @@
 namespace Domain\Auth\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Domain\Order\Models\Order;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -37,6 +38,10 @@ class User extends Authenticatable {
         return Attribute::make(
             get: fn() => 'https://ui-avatars.com/api/?background=random&color=fff&name=' . $this->name
         );
+    }
+
+    public function orders() {
+        return $this->hasMany( Order::class );
     }
 
 }

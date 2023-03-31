@@ -33,13 +33,13 @@ module.exports = {
         extend: {
             colors: {
                 white: "#FFF",
-                purple: "#7843E9",
-                pink: "#EC4176",
+                purple: "#4d2a16",
+                pink: "#85552d",
                 dark: "#222",
                 gray: "#454545",
-                darkblue: "#1E1F43",
-                body: '#BDBECA',
-                card: '#323359',
+                darkblue: "#4d2a16",
+                body: '#888888',
+                card: '#fff',
             },
         },
     },

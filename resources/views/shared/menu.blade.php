@@ -3,7 +3,7 @@
 
     @foreach($menu as $item)
         <a href="{{$item->link()}}"
-           class="text-white hover:text-pink @if($item->isActive()) font-bold @endif">{{$item->label()}}</a>
+           class="text-white hover:text-body @if($item->isActive()) font-bold @endif">{{$item->label()}}</a>
     @endforeach
 
 </nav>

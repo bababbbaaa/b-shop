@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.status-paid {
+    background: green;
+    color: #ffffff;
+}
+
+.status-success {
+    background: green;
+    color: #ffffff;
+}
+
+.status-new {
+    background: blue;
+    color: #ffffff;
+}
+
+.status-cancelled {
+    background: red;
+    color: #ffffff;
+}
+
+.status-pending {
+    background: gray;
+    color: #ffffff;
+}

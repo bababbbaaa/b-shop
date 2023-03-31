@@ -3,8 +3,12 @@
 namespace App\Providers;
 
 use App\Contracts\RouteRegistrar;
+use App\Routing\AccountRegistrar;
 use App\Routing\AppRegistrar;
+use App\Routing\CartRegistrar;
 use App\Routing\CatalogRegistrar;
+use App\Routing\OrderRegistrar;
+use App\Routing\PostRegistrar;
 use App\Routing\ProductRegistrar;
 use App\Routing\AuthRegistrar;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -17,14 +21,18 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RouteServiceProvider extends ServiceProvider {
 
-    public const HOME = '/';
-
     protected array $registrars = [
+        OrderRegistrar::class,
         AppRegistrar::class,
+        PostRegistrar::class,
+        CartRegistrar::class,
         ProductRegistrar::class,
         CatalogRegistrar::class,
         AuthRegistrar::class,
+        AccountRegistrar::class,
     ];
+
+    public const HOME = '/';
 
     public function boot(): void {
         $this->configureRateLimiting();
@@ -59,7 +67,7 @@ class RouteServiceProvider extends ServiceProvider {
     protected function mapRoutes( Registrar $router, array $registrars ) {
 
         foreach ( $registrars as $registrar ) {
-            if ( ! class_exists( $registrar ) || is_subclass_of( $registrar, RouteRegistrar::class ) ) {
+            if ( ! class_exists( $registrar ) || ! is_subclass_of( $registrar, RouteRegistrar::class ) ) {
                 throw new RuntimeException( sprintf(
                     'Cannot map routes \'%s\', it is not a valid routes class',
                     $registrar
