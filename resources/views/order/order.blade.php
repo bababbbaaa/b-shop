@@ -276,7 +276,7 @@
                             <!-- Promocode -->
                             <div class="space-y-4 hidden">
                                 <div class="flex gap-3">
-                                    <input type="text"
+                                    <input type="hidden"
                                            class="grow w-full h-14 px-4 rounded-lg border border-[#85552d] bg-white/20 focus:border-pink focus:shadow-[0_0_0_2px_#85552d] outline-none transition text-xxs md:text-xs font-semibold"
                                            placeholder="Промокод" required>
                                     <button type="submit" class="shrink-0 w-14 !h-[56px] !px-0 btn btn-purple">→

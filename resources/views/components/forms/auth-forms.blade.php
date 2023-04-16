@@ -1,5 +1,5 @@
 <div class="max-w-[640px] mx-auto p-6 xs:p-8 md:p-12 2xl:p-16 rounded-[20px] bg-purple">
-    <h1 class="mb-5 text-lg  font-semibold">
+    <h1 class="mb-5 text-lg text-white font-semibold">
         {{$title}}
     </h1>
     <form class="space-y-3" {{$attributes}} action="{{$action}}">
@@ -8,7 +8,7 @@
     {{$socialAuth ?? ''}}
 
     {{$buttons ?? ''}}
-    <ul class="flex flex-col md:flex-row justify-between gap-3 md:gap-4 mt-14 md:mt-20">
+    <ul class="flex text-white flex-col md:flex-row justify-between gap-3 md:gap-4 mt-14 md:mt-20">
         <li>
             <a href="#" class="inline-block  hover:/70 text-xxs md:text-xs font-medium"
                target="_blank" rel="noopener">Пользовательское соглашение</a>

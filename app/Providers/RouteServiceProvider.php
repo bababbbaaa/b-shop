@@ -22,6 +22,7 @@ use Symfony\Component\HttpFoundation\Response;
 class RouteServiceProvider extends ServiceProvider {
 
     protected array $registrars = [
+        \App\Routing\FavoriteRegistrar::class,
         OrderRegistrar::class,
         AppRegistrar::class,
         PostRegistrar::class,

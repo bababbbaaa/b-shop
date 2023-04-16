@@ -35,7 +35,7 @@
                 </x-forms.primery-button>
 
                 <x-slot:socialAuth>
-                    <ul class="space-y-3 mt-3">
+                    <ul class="space-y-3 mt-3 text-white">
 
                         <li>
                             <a href="{{route('socialite.redirect', 'vkontakte')}}"
@@ -69,7 +69,7 @@
                     </ul>
                 </x-slot:socialAuth>
                 <x-slot:buttons>
-                    <div class="space-y-3 mt-5">
+                    <div class="space-y-3 mt-5 text-white">
                         <div class="text-xxs md:text-xs">
                             <a href="{{route('forgot.page')}}" class=" hover:/70 font-bold">
                                 Забыли пароль?

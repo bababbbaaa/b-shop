@@ -34,9 +34,9 @@
                 </x-forms.primery-button>
 
                 <x-slot:buttons>
-                    <div class="space-y-3 mt-5">
+                    <div class="space-y-3 mt-5 text-white">
                         <div class="text-xxs md:text-xs">
-                            <a href="lost-password.html" class=" hover:/70 font-bold">
+                            <a href="{{route('forgot.page')}}" class=" hover:/70 font-bold">
                                 Забыли пароль?
                             </a>
                         </div>
