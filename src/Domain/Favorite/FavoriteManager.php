@@ -26,6 +26,10 @@ class FavoriteManager {
         return ! ! count( $favoriteItems );
     }
 
+    public function count() {
+        return $this->items()->count();
+    }
+
     public function cacheKey(): string {
         return 'cart_' . auth()->id();
     }
@@ -44,8 +48,8 @@ class FavoriteManager {
         return $favoriteItems;
     }
 
-    public function delete( $favoriteId ): void {
-        auth()->user()->favorite->favoriteItems()->where( 'product_id', $favoriteId )->delete();
+    public function delete( $productId ): void {
+        auth()->user()->favorite->favoriteItems()->where( 'product_id', $productId )->delete();
         cache()->forget( $this->cacheKey() );
     }
 }
