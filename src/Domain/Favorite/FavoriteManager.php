@@ -26,6 +26,10 @@ class FavoriteManager {
         return ! ! count( $favoriteItems );
     }
 
+    public function count() {
+        return $this->items()->count();
+    }
+
     public function cacheKey(): string {
         return 'cart_' . auth()->id();
     }
