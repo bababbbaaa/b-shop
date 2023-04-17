@@ -63,6 +63,9 @@
                                     <li>
                                         <a href="{{route('account.orders')}}"
                                            class=" hover:text-pink text-xs font-medium">Мои заказы</a></li>
+                                    <li>
+                                        <a href="{{route('favorite.index')}}"
+                                           class=" hover:text-pink text-xs font-medium">Избранное</a></li>
                                 </ul>
                             </div>
                             <div class="mt-6">
