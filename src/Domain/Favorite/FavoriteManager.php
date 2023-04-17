@@ -48,8 +48,8 @@ class FavoriteManager {
         return $favoriteItems;
     }
 
-    public function delete( $favoriteId ): void {
-        auth()->user()->favorite->favoriteItems()->where( 'product_id', $favoriteId )->delete();
+    public function delete( $productId ): void {
+        auth()->user()->favorite->favoriteItems()->where( 'product_id', $productId )->delete();
         cache()->forget( $this->cacheKey() );
     }
 }
